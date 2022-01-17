@@ -1,5 +1,6 @@
 # General
 autoload/
+session/
 
 # Compiled Lua sources
 luac.out
