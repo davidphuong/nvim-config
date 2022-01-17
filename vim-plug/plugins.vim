@@ -90,6 +90,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Telescope Extension
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+    Plug 'nvim-telescope/telescope-file-browser.nvim'
 
     " Quickfix Window
     Plug 'kevinhwang91/nvim-bqf'

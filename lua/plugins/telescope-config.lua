@@ -74,11 +74,22 @@ require('telescope').setup{
       override_file_sorter = true,     -- override the file sorter
       case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
                                        -- the default case_mode is "smart_case"
-    }
+    },
+    file_browser = {
+      mappings = {
+        ["i"] = {
+          -- your custom insert mode mappings
+        },
+        ["n"] = {
+          -- your custom normal mode mappings
+        },
+      },
+    },
   }
 }
 
 require('telescope').load_extension('fzf')
+require("telescope").load_extension "file_browser"
 
 -- Keybindings
 vim.api.nvim_set_keymap("n", "<leader>f<space>", "<cmd>Telescope resume<cr>", {noremap = true, silent = true})
@@ -88,7 +99,7 @@ vim.api.nvim_set_keymap("n", "<leader>1ff", "<cmd>Telescope find_files cwd=../<c
 vim.api.nvim_set_keymap("n", "<leader>2ff", "<cmd>Telescope find_files cwd=../../<cr>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<leader>3ff", "<cmd>Telescope find_files cwd=../../../<cr>", {noremap = true, silent = true})
 
-vim.api.nvim_set_keymap("n", "<leader>fd", "<cmd>Telescope file_browser<cr>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>fd", ":Telescope file_browser", {noremap = true, silent = true})
 
 vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<leader>1fg", "<cmd>Telescope live_grep cwd=../<cr>", {noremap = true, silent = true})
