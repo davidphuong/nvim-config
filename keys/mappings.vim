@@ -68,7 +68,7 @@ noremap <silent> ,k :wincmd k<cr>
 " Move the cursor to the window right of the current one
 noremap <silent> ,l :wincmd l<cr>
 " Close the current window
-noremap <silent> ,cc :close<cr>
+noremap <silent> ,c :close<cr>
 " Move the current window to the right of the main Vim window
 noremap <silent> ,ml <C-W>L
 " Move the current window to the top of the main Vim window

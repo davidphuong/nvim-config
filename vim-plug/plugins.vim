@@ -47,7 +47,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'VonHeikemen/searchbox.nvim'
 
     " Treesitter
-    Plug 'nvim-treesitter/nvim-treesitter'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
     " LSP
     Plug 'neovim/nvim-lspconfig'
