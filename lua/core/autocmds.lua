@@ -94,12 +94,38 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.tabstop = 4
     vim.opt_local.shiftwidth = 4
+    vim.opt_local.colorcolumn = "80,120"
   end,
   desc = "C/C++ indent and column rulers",
 })
 
 -- ----------------------------------------------------------------------------
--- Auto-create parent directories on save
+-- Remove Windows carriage returns on save
+-- ----------------------------------------------------------------------------
+-- Pastes from Windows host can introduce \r (shown as ^M) at line endings.
+-- This strips them silently on every save.
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = augroup("strip_carriage_returns"),
+  pattern = "*",
+  callback = function()
+    vim.cmd([[%s/\r//e]])
+  end,
+  desc = "Remove Windows carriage returns (^M) on save",
+})
+
+-- ----------------------------------------------------------------------------
+-- Jinja2 template filetype
+-- ----------------------------------------------------------------------------
+-- Treat .j2/.jinja/.jinja2 files as YAML for syntax highlighting.
+-- Covers Ansible templates which are YAML with Jinja2 expressions.
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  group = augroup("jinja2_filetype"),
+  pattern = { "*.j2", "*.jinja", "*.jinja2" },
+  callback = function()
+    vim.bo.filetype = "yaml"
+  end,
+  desc = "Treat Jinja2 template files as YAML for syntax highlighting",
+})
 -- ----------------------------------------------------------------------------
 -- If you do :e lua/some/new/path/file.lua and the dirs don't exist, this
 -- creates them automatically when you save.
